@@ -24,6 +24,7 @@ services:
     tty: true
     ports:
       - "3000:3000"
+    entrypoint: dockerize -wait tcp://db:3306 -timeout 20s docker-entrypoint.sh
     command: sh start.sh
   db:
     platform: linux/x86_64
