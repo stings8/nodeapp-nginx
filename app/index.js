@@ -11,6 +11,18 @@ const CONFIG = {
 
 const connection = mysql.createConnection(CONFIG)
 
+connection.connect((err) => {
+  if (err) throw err
+
+  const SQL = 'CREATE TABLE People (Id int NOT NULL AUTO_INCREMENT, Name VARCHAR(255), PRIMARY KEY(Id))'
+
+  connection.query(SQL, (err, result) => {
+    if (err) throw err
+    console.log('Created table 💾')
+  }) 
+
+})
+
 const app = express()
 app.set('view engine', 'ejs')
 
