@@ -17,7 +17,6 @@ connection.connect((err) => {
   const SQL = 'CREATE TABLE People (Id int NOT NULL AUTO_INCREMENT, Name VARCHAR(255), PRIMARY KEY(Id))'
 
   connection.query(SQL, (err, result) => {
-    if (err) throw err
     console.log('Created table 💾')
   }) 
 
@@ -41,7 +40,7 @@ const listPeoples = () => {
 
 const createPeople = () => {
   const name = faker.person.fullName();
-  const INSERT_PEOPLE = `INSERT INTO People(Name) values('${name}')`
+  const INSERT_PEOPLE = `INSERT INTO People(Name) values("${name}")`
   connection.query(INSERT_PEOPLE)
 
 }
